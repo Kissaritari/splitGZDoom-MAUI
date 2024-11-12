@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="splitGZDoom.MainPage">
+           
+
+    <VerticalStackLayout Padding="20" Spacing="5">
+
+        <!-- Host GZDoom Path -->
+        <Label Text="Host GZDoom Path:" />
+        <HorizontalStackLayout>
+            <Entry x:Name="HostPathEntry" Placeholder="Select Host GZDoom Path" WidthRequest="300" />
+            <Button  Text="Browse..." Clicked="OnBrowseHostPathClicked" />
+        </HorizontalStackLayout>
+
+        <!-- Client GZDoom Path -->
+        <Label Text="Client GZDoom Path:" />
+        <HorizontalStackLayout>
+            <Entry x:Name="ClientPathEntry" Placeholder="Select Client GZDoom Path" WidthRequest="300" />
+            <Button Text="Browse..." Clicked="OnBrowseClientPathClicked" />
+        </HorizontalStackLayout>
+
+        <!-- IWAD File -->
+        <Label Text="IWAD File:" />
+        <HorizontalStackLayout>
+            <Entry x:Name="IwadPathEntry" Placeholder="Select IWAD File" WidthRequest="300" />
+            <Button Text="Browse..." Clicked="OnBrowseIwadPathClicked" />
+        </HorizontalStackLayout>
+
+        <Label Text="Optional Resources (WADs, PK3s)" FontAttributes="Bold" />
+
+        <VerticalStackLayout Padding="10">
+            
+
+            <!-- CollectionView to display selected files -->
+            <ListView x:Name="FileListView" ItemsSource="{Binding ResourceFiles}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding .}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!-- Add Resource Button -->
+            <Button Margin="5" Text="Add Resource File" Clicked="OnAddResourceClicked" />
+        </VerticalStackLayout>
+
+        <!-- Difficulty Selector -->
+        <Label Text="Difficulty Level:" />
+        <Picker x:Name="DifficultyPicker" />
+
+        <!-- Debug Log Label -->
+        <Label x:Name="DebugLogLabel" 
+               Text="Debug log will appear here..." 
+               FontSize="12" 
+               TextColor="Gray" 
+               VerticalOptions="EndAndExpand" 
+               LineBreakMode="WordWrap"/>
+
+        <!-- Level Warp Input -->
+        <Label Text="Level Warp (Enter a level number):" />
+        <Entry x:Name="LevelWarpEntry" Keyboard="Numeric" Placeholder="Enter level number" />
+
+        <!-- Launch Button -->
+        <Button Text="Launch Multiplayer" Clicked="OnLaunchClicked" VerticalOptions="CenterAndExpand" />
+
+    </VerticalStackLayout>
+
+</ContentPage>
